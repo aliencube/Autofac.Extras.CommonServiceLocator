@@ -2,13 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <PackageId>Aliencube.Autofac.Extras.CommonServiceLocator</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageId>Aliencube.Autofac.Extras.CommonServiceLocator</PackageId>
+    <Owners>Aliencube</Owners>
     <Authors>Autofac Contributors</Authors>
     <Company>Autofac</Company>
+    <Version>1.0.0</Version>
+    <Title>Autofac.Extras.CommonServiceLocator for .NET Standard</Title>
     <Product>Autofac.Extras.CommonServiceLocator for .NET Standard</Product>
-    <PackageReleaseNotes>The Microsoft Enterprise Library provides a Common Service Locator for abstracting away IoC containers. This package contains an implementation of the Common Service Locator for use with Autofac.</PackageReleaseNotes>
-    <Description>This is a .NET Standard port of Autofac Extras: Microsoft Common Service Locator Implementation (https://www.nuget.org/packages/Autofac.Extras.CommonServiceLocator/).</Description>
+    <Summary>This is a .NET Standard port of Autofac Extras: Microsoft Common Service Locator Implementation (https://www.nuget.org/packages/Autofac.Extras.CommonServiceLocator/).</Summary>
+    <Description>The Microsoft Enterprise Library provides a Common Service Locator for abstracting away IoC containers. .NET Standard port of this package contains an implementation of the Common Service Locator for use with Autofac.</Description>
+    <PackageTags>CommonServiceLocator, ServiceLocation, Microsoft.Practices.ServiceLocation, Autofac, Autofac.Extras.CommonServiceLocator, NetStandard</PackageTags>
+    <Copyright />
+    <PackageLicenseUrl>https://github.com/aliencube/Autofac.Extras.CommonServiceLocator/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/aliencube/Autofac.Extras.CommonServiceLocator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/aliencube/Autofac.Extras.CommonServiceLocator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

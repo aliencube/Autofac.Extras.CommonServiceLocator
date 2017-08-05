@@ -1,29 +1,77 @@
-environment:
-  package_semantic_version: 4.0.0
-  assembly_semantic_version: 4.0.0
+# dev only
+-
+  environment:
+    package_semantic_version: 1.0.0
+  version: $(package_semantic_version).{build}
+  pull_requests:
+    do_not_increment_build_number: true
+  branches:
+    only:
+    - dev
+  skip_tags: true
+  skip_commits:
+    files:
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+      - appveyor.yml
+      - LICENSE
+      - README.md
+      - Settings.StyleCop
+      - Autofac.Extras.CommonServiceLocator.sln
+      - Autofac.Extras.CommonServiceLocator.sln.DotSettings
+      - '**/*.csproj'
+  image: Visual Studio 2017
+  configuration: Debug
+  platform: Any CPU
+  dotnet_csproj:
+    patch: true
+    file: '**\*.csproj'
+    version: '$(package_semantic_version).0'
+    package_version: '$(package_semantic_version).0'
+  nuget:
+    disable_publish_on_pr: true
+  build_script:
+  - ps: .\build-solution.ps1 -Configuration $env:configuration -Platform $env:platform
 
-version: $(package_semantic_version).{build}
-
-assembly_info:
-  patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_version: '$(assembly_semantic_version).0'
-  assembly_file_version: '$(appveyor_build_version)'
-  assembly_informational_version: '$(package_semantic_version)-CI-{build}'
-
-configuration: Release
-
-before_build:
-- nuget restore
-
-build:
-  verbosity: minimal
-  publish_nuget: true
-  publish_nuget_symbols: true
-
-deploy:
-- provider: NuGet
-  server: https://www.myget.org/F/autofac/api/v2/package
-  api_key:
-    secure: rCUEY75fXN0wxtMy6QL4jCrLdaYbxIBzIXWeN+wEu/XDpyqimzreOc5AH5jMd5ah
-  symbol_server: https://www.myget.org/F/autofac/symbols/api/v2/package
+# release Only
+-
+  environment:
+    package_semantic_version: 1.0.0
+  version: $(package_semantic_version).{build}
+  pull_requests:
+    do_not_increment_build_number: true
+  branches:
+    only:
+    - release/all
+  skip_tags: true
+  # skip_commits:
+  #   files:
+  #     - .editorconfig
+  #     - .gitattributes
+  #     - .gitignore
+  #     - appveyor.yml
+  #     - LICENSE
+  #     - README.md
+  #     - Settings.StyleCop
+  #     - Autofac.Extras.CommonServiceLocator.sln
+  #     - Autofac.Extras.CommonServiceLocator.sln.DotSettings
+  #     - '**/*.csproj'
+  image: Visual Studio 2017
+  configuration: Release
+  platform: Any CPU
+  dotnet_csproj:
+    patch: true
+    file: '**\*.csproj'
+    version: '$(package_semantic_version).0'
+    package_version: '$(package_semantic_version).0'
+  nuget:
+    disable_publish_on_pr: true
+  build_script:
+  - ps: .\build-solution.ps1 -Configuration $env:configuration -Platform $env:platform
+  artifacts:
+  - path: .\src\Autofac.Extras.CommonServiceLocator\**\*.nupkg
+    name: Autofac.Extras.CommonServiceLocator
+  deploy:
+  - provider: Environment
+    name: NuGet for Autofac.Extras.CommonServiceLocator
