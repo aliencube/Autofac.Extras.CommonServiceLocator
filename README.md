@@ -1,5 +1,8 @@
 # Autofac.Extras.CommonServiceLocator for .NET Standard #
 
+[![](https://img.shields.io/nuget/dt/Aliencube.Autofac.Extras.CommonServiceLocator.svg)](https://www.nuget.org/packages/Aliencube.Autofac.Extras.CommonServiceLocator/)
+[![](https://img.shields.io/nuget/v/Aliencube.Autofac.Extras.CommonServiceLocator.svg)](https://www.nuget.org/packages/Aliencube.Autofac.Extras.CommonServiceLocator/)
+
 Common Service Locator implementation for Autofac IoC
 
 Please file issues and pull requests for this package in this repository rather than in the Autofac core repo.
